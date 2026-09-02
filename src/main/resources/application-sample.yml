@@ -1,0 +1,32 @@
+# ------------------------------------------------------------------
+# Copy the relevant blocks below into the CONSUMING project's
+# application.yml. This file is just a reference/sample and is not
+# picked up automatically (name doesn't match application*.yml).
+# ------------------------------------------------------------------
+gurpreet:
+  starter:
+    jwt:
+      secret: "CHANGE_ME_TO_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS"
+      expiration-ms: 3600000          # 1 hour
+      refresh-expiration-ms: 604800000 # 7 days
+      header: Authorization
+      prefix: "Bearer "
+
+    security:
+      public-endpoints:
+        - /api/auth/**
+        - /swagger-ui/**
+        - /v3/api-docs/**
+        - /actuator/health
+      stateless: true
+      csrf-disabled: true
+
+    cors:
+      allowed-origins:
+        - "http://localhost:4200"
+        - "https://your-frontend-domain.com"
+      allowed-methods: [GET, POST, PUT, PATCH, DELETE, OPTIONS]
+      allowed-headers: ["*"]
+      exposed-headers: ["Authorization"]
+      allow-credentials: true
+      max-age-seconds: 3600

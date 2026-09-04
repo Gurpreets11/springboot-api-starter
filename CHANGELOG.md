@@ -6,6 +6,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+### Added
+- `RequestLoggingFilter` with MDC-based request ID and current-user tracing
+- `LoggingProperties` — toggle logging on/off, exclude specific paths
+- `OpenApiConfig` — Swagger/OpenAPI setup with a working JWT "Authorize" button, activates only if `springdoc-openapi` is on the consuming project's classpath
+- `SwaggerProperties` — per-project title/description/version/contact
+- Sample `logback-spring.xml` with an MDC-aware log pattern
+- `spring-boot-starter-actuator` dependency
+
+### Fixed
+- `StarterAutoConfiguration` was missing `JwtTokenProvider` in its `@Import`, causing `UnsatisfiedDependencyException` in every consuming project
+- Default `public-endpoints` was missing `/swagger-ui.html` and `/webjars/**`, causing a 401 on Swagger UI even though `/swagger-ui/**` was public
 
 ## [1.0.0] - 2026-09-02
 ### Added

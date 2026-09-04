@@ -22,8 +22,10 @@ public class SecurityStarterProperties {
     /** Endpoints that should NOT require a valid JWT. */
     private List<String> publicEndpoints = List.of(
             "/api/auth/**",
+            "/swagger-ui.html",
             "/swagger-ui/**",
             "/v3/api-docs/**",
+            "/webjars/**",
             "/actuator/health"
     );
 

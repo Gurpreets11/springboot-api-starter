@@ -15,9 +15,12 @@ gurpreet:
     security:
       public-endpoints:
         - /api/auth/**
+        - /swagger-ui.html
         - /swagger-ui/**
         - /v3/api-docs/**
+        - /webjars/**
         - /actuator/health
+
       stateless: true
       csrf-disabled: true
 

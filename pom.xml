@@ -39,7 +39,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
+        <!-- Actuator: health/metrics/info endpoints -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <!-- Web (needed for filters, ControllerAdvice, CORS) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,6 +90,13 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
+            <optional>true</optional>
+        </dependency>
+ 		<!-- Optional: only activates OpenApiConfig if the consuming project adds this too -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.6.0</version>
             <optional>true</optional>
         </dependency>
 

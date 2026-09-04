@@ -3,6 +3,7 @@ package com.gurpreet.starter.autoconfigure;
 import com.gurpreet.starter.config.CorsConfig;
 import com.gurpreet.starter.config.SecurityConfig;
 import com.gurpreet.starter.exception.GlobalExceptionHandler;
+import com.gurpreet.starter.security.JwtTokenProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -27,7 +28,9 @@ import org.springframework.context.annotation.Import;
 @Import({
         CorsConfig.class,
         SecurityConfig.class,
-        GlobalExceptionHandler.class
+        GlobalExceptionHandler.class,
+        JwtTokenProvider.class
+
 })
 public class StarterAutoConfiguration {
 }

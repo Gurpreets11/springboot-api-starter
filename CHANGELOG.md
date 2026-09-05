@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 ### Added
+- `RateLimitFilter` — in-memory per-IP token bucket rate limiter (Bucket4j), ordered to run before Spring Security's filter chain
+- `RateLimitProperties` — default limit, excluded paths, and a stricter shared limit for `strict-paths` (e.g. `/api/auth/login`, `/api/auth/register`), to slow down brute-force attempts
+- `bucket4j-core` dependency
 - `RequestLoggingFilter` with MDC-based request ID and current-user tracing
 - `LoggingProperties` — toggle logging on/off, exclude specific paths
 - `OpenApiConfig` — Swagger/OpenAPI setup with a working JWT "Authorize" button, activates only if `springdoc-openapi` is on the consuming project's classpath
@@ -17,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 - `StarterAutoConfiguration` was missing `JwtTokenProvider` in its `@Import`, causing `UnsatisfiedDependencyException` in every consuming project
 - Default `public-endpoints` was missing `/swagger-ui.html` and `/webjars/**`, causing a 401 on Swagger UI even though `/swagger-ui/**` was public
+
+### Notes
+- Rate-limit per-path override config deliberately uses a `List<String>` (`strict-paths`) rather than a `Map<String, X>` keyed by path — Spring Boot's YAML binding has a known issue with map keys containing slashes (silently fails to bind, falls back to defaults with no error)
 
 ## [1.0.0] - 2026-09-02
 ### Added
